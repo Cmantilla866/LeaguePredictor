@@ -1,0 +1,99 @@
+
+{% extends 'Base/base.html'%}
+{% block title%} {{ Home}} {% endblock%}
+{% block content %}
+{% from 'Macros/macro.html' import render_field %}
+</br>
+<h1 class="le"> League of Legends Esports Predictor </h1>
+</br>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="LCS" data-slide-to="0" class="active" href="LCS"></li>
+          <li data-target="LEC" data-slide-to="1"></li>
+          <li data-target="LCK" data-slide-to="2"></li>
+          <li data-target="LLA" data-slide-to="3"></li>
+          <li data-target="CB" data-slide-to="4"></li>
+          <li data-target="LCL" data-slide-to="5"></li>
+          <li data-target="LFL" data-slide-to="6"></li>
+          <li data-target="TCL" data-slide-to="7"></li>
+          <li data-target="OPL" data-slide-to="8"></li>
+          <li data-target="VCS" data-slide-to="9"></li>
+          <li data-target="Ultraliga" data-slide-to="10"></li>
+          <li data-target="LMS" data-slide-to="11"></li>
+
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <a href="/LCS"><img src="{{ url_for('static',filename='LCS.jpg') }}" class="d-block w-1240" alt="" height="360" width="1240" ></a>
+          </div>
+          <div class="carousel-item">
+            <a href="/LEC"><img src="{{ url_for('static',filename='LEC.jpg') }}" class="d-block w-1240" alt="" height="360" width="1240"></a>
+          </div>
+          <div class="carousel-item">
+            <a href="/LCK"><img src="{{ url_for('static',filename='LCK.jpg') }}" class="d-block w-1240" alt="" height="360" width="1240"></a>
+          </div>
+          <div class="carousel-item">
+                <a href="/LLA"><img src="{{ url_for('static',filename='LLA.jpg') }}" class="d-block w-1240" alt="" height="360" width="1240"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="/CB"><img src="{{ url_for('static',filename='CB.jpg') }}" class="d-block w-1240" alt="" height="360" width="1240"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="/LCL"><img src="{{ url_for('static',filename='LCL.jpg') }}" class="d-block w-1240" alt="" height="360" width="1240"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="/LFL"><img src="{{ url_for('static',filename='LFL.jpg') }}" class="d-block w-1240" alt="" height="360" width="1240"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="/TCL"><img src="{{ url_for('static',filename='TCL.jpg') }}" class="d-block w-1240" alt="" height="360" width="1240"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="/OPL"><img src="{{ url_for('static',filename='OPL.jpg') }}" class="d-block w-1240" alt="" height="360" width="1240"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="/VCS"><img src="{{ url_for('static',filename='VCS.jpg') }}" class="d-block w-1240" alt="" height="360" width="1240"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="/Ultraliga"><img src="{{ url_for('static',filename='Ultraliga.jpg') }}" class="d-block w-1240" alt="" height="360" width="1240"></a>
+            </div>
+            <div class="carousel-item">
+                <a href="/LMS"><img src="{{ url_for('static',filename='LMS.jpg') }}" class="d-block w-1240" alt="" height="360" width="1240"></a>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+</br>
+</br>
+<h2 class="le">Upcomig Games</h2>
+</br>
+<div class="row">
+    <div class="col-xl-12">
+        <table class="table table-bordered table-dark table-hover align-self-center">
+            <tr class="table-dark">
+                <td>Date</td>
+                <td>Blue Side</td>
+                <td>Red Side</td>
+                <td>Predicted Score</td>
+            </tr class="table-secondary">
+            {% for prediction in preditctions %}
+                 <tr>
+                    <td>{{prediction['date']}}</td>
+                    <td>{{prediction['Blue Side']}}</td>
+                    <td>{{prediction['Red Side']}}</td>
+                    <td>{{prediction['result']}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+</br>
+</br>
+{% endblock %}

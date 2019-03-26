@@ -1,0 +1,41 @@
+{% extends 'Base/base.html'%}
+{% block title%} {{name}} {% endblock%}
+{% block content %}
+{% from 'Macros/macro.html' import render_field %}
+</br>
+</br>
+</br>
+<!-- <img src="{{ url_for('static',filename=name+'.jpg') }}" class="d-block w-1110" alt="Responsive image" height="300" width="1110"> -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  {% for category,message in messages %}
+    <div class="alert alert-{{ category }}">
+        {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+    <div>
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 text-white">{{name}}</legend>
+                <div class="form-group">
+                    {{form.blueSide.label(class="form-control-label text-white")}}
+                    {{form.blueSide(class="form-control form-control-lg")}}
+                </div>
+                <div class="form-group">
+                    {{form.redSide.label(class="form-control-label text-white")}}
+                    {{form.redSide(class="form-control form-control-lg")}}
+                </div>
+                <div class="form-group">
+                    {{form.score.label(class="form-control-label text-white")}}
+                    {{form.score(class="form-control form-control-lg")}}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{form.submit(class="btn btn-outline-info")}}
+            </div>
+        </form>
+    </div>
+{% endblock %}
